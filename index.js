@@ -33,7 +33,7 @@ const main = async () => {
   const page = await browser.newPage();
   let pageUrl =
     "https://www.ticketmaster.fr/fr/manifestation/the-weeknd-billet/idmanif/520973";
-  await page.goto(pageUrl);
+  await page.goto(pageUrl), { waitUntil: "networkidle2" };
 
   if (await page.waitForSelector("#onetrust-accept-btn-handler")) {
     await page.click("#onetrust-accept-btn-handler");
