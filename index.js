@@ -22,7 +22,14 @@ const sendSms = async (text) => {
 };
 
 const main = async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browserFetcher = puppeteer.createBrowserFetcher();
+  let revisionInfo = await browserFetcher.download("1095492");
+  const browser = await puppeteer.launch({
+    executablePath: revisionInfo.executablePath,
+    ignoreDefaultArgs: ["--disable-extensions"],
+    headless: true,
+    args: ["--no-sandbox", "--disabled-setupid-sandbox"],
+  });
   const page = await browser.newPage();
   let pageUrl =
     "https://www.ticketmaster.fr/fr/manifestation/the-weeknd-billet/idmanif/520973";
