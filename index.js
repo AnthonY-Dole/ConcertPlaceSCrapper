@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const dotenv = require("dotenv").config();
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-console.log(accountSid, authToken);
+
 const client = require("twilio")(accountSid, authToken);
 
 function sleep(ms) {
@@ -15,13 +15,13 @@ const sendSms = async (text) => {
   client.messages
     .create({
       body: "Ticket disponible: " + text,
-      from: "+15746867745",
-      to: "+33781860480",
+      from: "whatsapp:+14155238886",
+      to: "whatsapp:+33781860480",
     })
     .then((message) => console.log(message.sid));
 };
 
-(async () => {
+const main = async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   let pageUrl =
@@ -77,6 +77,9 @@ const sendSms = async (text) => {
   } else {
     console.log("No ticket available");
   }
-  await sleep(100000);
+  await sleep(10000);
   await browser.close();
-})();
+};
+
+main();
+setInterval(main, 1000 * 60 * 30);
