@@ -27,7 +27,7 @@ const main = async () => {
   const browser = await puppeteer.launch({
     executablePath: "/usr/bin/google-chrome",
     ignoreDefaultArgs: ["--disable-extensions"],
-    headless: true,
+    headless: false,
     args: ["--no-sandbox", "--disabled-setupid-sandbox"],
   });
   const page = await browser.newPage();
