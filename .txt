@@ -1,0 +1,3 @@
+--env-file=.env
+docker build --platform linux/amd64 -t headless-chrome .
+docker run --rm -p 3000:3000 --env-file=.env headless-chrome 

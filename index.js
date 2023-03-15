@@ -25,7 +25,7 @@ const main = async () => {
   const browserFetcher = puppeteer.createBrowserFetcher();
   let revisionInfo = await browserFetcher.download("1095492");
   const browser = await puppeteer.launch({
-    executablePath: revisionInfo.executablePath,
+    executablePath: "/usr/bin/google-chrome",
     ignoreDefaultArgs: ["--disable-extensions"],
     headless: true,
     args: ["--no-sandbox", "--disabled-setupid-sandbox"],
