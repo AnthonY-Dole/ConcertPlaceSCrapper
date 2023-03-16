@@ -28,6 +28,7 @@ const main = async () => {
     executablePath: "/usr/bin/google-chrome",
     ignoreDefaultArgs: ["--disable-extensions"],
     headless: true,
+    slowMo: 10,
     args: ["--no-sandbox", "--disabled-setupid-sandbox"],
   });
   const page = await browser.newPage();
