@@ -16,7 +16,7 @@ const sendSms = async (text) => {
     .create({
       body: "Ticket disponible: " + text,
       from: "whatsapp:+14155238886",
-      to: "whatsapp:+33781860480",
+      to: "whatsapp:+3300000000",
     })
     .then((message) => console.log(message.sid));
 };
